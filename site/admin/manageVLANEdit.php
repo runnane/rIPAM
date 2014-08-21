@@ -70,6 +70,14 @@ $(document).ready(function(){
 			<input type="hidden" name="action" value="<?php print $_POST['action']; ?>">
 		</td>
 	</tr>
+    <!-- vlan -->
+    <tr>
+        <td class="middle"><?php print _('Master VLAN'); ?></td>
+        <td id="vlanDropdown"> 
+			<?php include('manageVLANEditPrintVlanDropdown.php'); ?>
+         </td>
+        <td class="info2"><?php print _('Select VLAN'); ?></td>
+    </tr>
 	
 	<!-- Custom -->
 	<?php

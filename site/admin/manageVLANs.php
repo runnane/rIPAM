@@ -51,8 +51,9 @@ else {
 	//print details
 	print '<tr>'. "\n";
 	
+	$number = $vlan['masterVlanNumber']>0?"{$vlan['masterVlanNumber']}:{$vlan['number'] }":$vlan['number'];
 	print '	<td class="name">'. $vlan['name'] .'</td>'. "\n";
-	print '	<td class="number">'. $vlan['number'] .'</td>'. "\n";
+	print '	<td class="number">'. $number .'</td>'. "\n";
 	print '	<td class="description">'. $vlan['description'] .'</td>'. "\n";	
 	
 	if(sizeof($custom) > 0) {

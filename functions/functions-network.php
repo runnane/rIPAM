@@ -1641,6 +1641,7 @@ function subnetGetVLANdetailsById($vlanId)
 }
 
 
+
 /**
  * Get all VLANS
  */
@@ -1662,7 +1663,7 @@ function getAllVlans($tools = false)
 		
     /* check if it came from tools and use different query! */
     if($tools) 	{ $query = 'SELECT vlans.number,vlans.name,vlans.description,subnets.subnet,subnets.mask,subnets.id AS subnetId,subnets.sectionId'.$myFieldsInsert['id'].' FROM vlans LEFT JOIN subnets ON subnets.vlanId = vlans.vlanId ORDER BY vlans.number ASC;'; }
-    else 		{ $query = 'select * from `vlans` order by `number` asc;'; }
+    else 		{ $query = 'select vlans.*, vv.number as masterVlanNumber, vv.name as masterVlanName from `vlans` LEFT JOIN vlans vv ON vlans.masterVlanId=vv.vlanId order by `masterVlanNumber`,`number` asc;'; }
 
     /* execute */
     try { $vlan = $database->getArray( $query ); }
@@ -1676,6 +1677,28 @@ function getAllVlans($tools = false)
 	return $vlan;
 }
 
+/**
+ * Get all Master VLANS
+ */
+
+function getAllMasterVlans()
+{
+    global $db;                                                                      # get variables from config file
+    $database    = new database($db['host'], $db['user'], $db['pass'], $db['name']); 
+    
+ $query = 'select * from `vlans` WHERE `masterVlanId` = \'0\' order by `number` asc;';
+
+    /* execute */
+    try { $vlan = $database->getArray( $query ); }
+    catch (Exception $e) { 
+        $error =  $e->getMessage(); 
+        print ("<div class='alert alert-danger'>"._('Error').": $error</div>");
+        return false;
+    }  
+  
+	/* return vlan details */
+	return $vlan;
+}
 
 /**
  * Get subnets by VLAN id

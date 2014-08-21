@@ -3,7 +3,7 @@ rIPAM diff Description
 rIPAM is a fork of phpipam by Miha Petkovsek (miha.petkovsek@gmail.com // http://phpipam.net) 
 It was started as a result of custom features needed on an existing phpipam installation, while not being features needed in a mainstream IPAM. 
 With time, some of the features might be used as patches against phpipam.
-Forked by jon@tungland.org
+Forked by jon@runnane.no // http://runnane.no
 
 Original README following beneath:
 

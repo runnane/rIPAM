@@ -1677,7 +1677,7 @@ function updateVLANDetails($vlan, $lastId = false)
         $myFields = getCustomFields('vlans');
         $myFieldsInsert['query']  = '';
         $myFieldsInsert['values'] = '';
-	
+		
         if(sizeof($myFields) > 0) {
 			/* set inserts for custom */
 			foreach($myFields as $myField) {	
@@ -1691,10 +1691,10 @@ function updateVLANDetails($vlan, $lastId = false)
 				}
 			}
 		}
-    
+
     	$query  = 'insert into `vlans` '. "\n";
-    	$query .= '(`name`,`number`,`description` '.$myFieldsInsert['query'].') values '. "\n";
-   		$query .= '("'. $vlan['name'] .'", "'. $vlan['number'] .'", "'. $vlan['description'] .'" '. $myFieldsInsert['values'] .' ); '. "\n";
+    	$query .= '(`name`,`number`,`description`,`masterVlanId` '.$myFieldsInsert['query'].') values '. "\n";
+   		$query .= '("'. $vlan['name'] .'", "'. $vlan['number'] .'", "'. $vlan['description'] .'", "'. $vlan['masterVlanId'] .'" '. $myFieldsInsert['values'] .' ); '. "\n";
 
     }
     else if($vlan['action'] == "edit") {
@@ -1715,7 +1715,7 @@ function updateVLANDetails($vlan, $lastId = false)
 		}
     
     	$query  = 'update `vlans` set '. "\n";    
-    	$query .= '`name` = "'. $vlan['name'] .'", `number` = "'. $vlan['number'] .'", `description` = "'. $vlan['description'] .'" '. "\n";   
+    	$query .= '`name` = "'. $vlan['name'] .'", `number` = "'. $vlan['number'] .'", `description` = "'. $vlan['description'] .'", `masterVlanId` = "'. $vlan['masterVlanId'] .'" '. "\n";   
     	$query .= $myFieldsInsert['query'];  
     	$query .= 'where `vlanId` = "'. $vlan['vlanId'] .'";'. "\n";    
     }
@@ -2147,7 +2147,7 @@ function getCustomFields($table)
 		unset($res['port'], $res['mac'], $res['owner'], $res['state'], $res['note'], $res['lastSeen'], $res['excludePing'], $res['editDate']);		
 	}
 	elseif($table == "vlans") {
-		unset($res['vlanId'], $res['name'], $res['number'], $res['description'],$res['editDate']);		
+		unset($res['vlanId'], $res['name'], $res['number'], $res['description'],$res['editDate'],$res['masterVlanId']);		
 	}
 	
 	return $res;
