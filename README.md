@@ -1,5 +1,14 @@
-Description 
+rIPAM diff Description 
 ===========	
+rIPAM is a fork of phpipam by Miha Petkovsek (miha.petkovsek@gmail.com // http://phpipam.net) 
+It was started as a result of custom features needed on an existing phpipam installation, while not being features needed in a mainstream IPAM. 
+With time, some of the features might be used as patches against phpipam.
+Forked by jon@tungland.org
+
+Original README following beneath:
+
+Description 
+============
 phpipam is an open-source web IP address management application. Its goal is to provide light and simple |P address management application. 
 It is ajax-based using jQuery libraries, it uses php scripts and javascript and some HTML5/CSS3 features, so some modern browser is preferred to be able to display javascript quickly and correctly...
 
