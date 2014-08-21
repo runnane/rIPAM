@@ -1,6 +1,16 @@
 TODO
-===========
-* Master vlans: block setting mastervlanid on vlans with children
-* Master vlans: searching
-* Master vlans: propagate deletion of master vlans
+========
+
+
+Master Vlans 
+-------
+
+* Block setting mastervlanid on vlans with children
+* Searching / lookup (jquery ui style?)
+* Propagate deletion of master vlans
+* Display mastervlanid: in dropdowns
+
+VRF
+-------
+* ?
 
